@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="See how K-Means turns a dog photo into a compact palette of RGB vectors.">
+    <title>Pixel, meet vector · K-Means image compression</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="mark" href="#top" aria-label="Back to top"><span>RGB</span><i></i><span>K=16</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#compare">Compare</a>
+        <a href="#method">How it works</a>
+        <a href="#vectors">Vectors</a>
+      </nav>
+      <a class="repo-link" href="https://github.com/isaiahcampusano/image-compression">View code <span>↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow"><span></span> MACHINE LEARNING, MADE VISIBLE</div>
+        <h1>Every pixel is<br>a <em>tiny vector.</em></h1>
+        <p class="lede">We taught an algorithm to see this photo as 76,800 points in color space—then summarize the whole thing with just 16 colors.</p>
+        <a class="primary-cta" href="#compare">Slide between the images <span>↓</span></a>
+        <div class="hero-stats" aria-label="Project statistics">
+          <div><strong>76,800</strong><span>pixel vectors</span></div>
+          <div><strong>3</strong><span>dimensions</span></div>
+          <div><strong>16</strong><span>final colors</span></div>
+        </div>
+      </section>
+
+      <section class="comparison-section" id="compare">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div><p class="kicker">THE RESULT</p><h2>Same dog. Smaller vocabulary.</h2></div>
+          <p>The model trades thousands of subtle color variations for 16 representative tones while preserving the shape, expression, and scruffy charm.</p>
+        </div>
+        <div class="comparison" style="--position: 50%">
+          <img class="comparison-image original" src="assets/IMG_0959.jpeg" alt="Original photo of a small scruffy dog sitting on a black cushion">
+          <div class="compressed-wrap"><img class="comparison-image" src="assets/IMG_0959_compressed.jpg" alt="The same dog photo compressed to a 16-color palette"></div>
+          <div class="divider" aria-hidden="true"><span>↔</span></div>
+          <span class="image-label label-original">ORIGINAL</span>
+          <span class="image-label label-compressed">K-MEANS · 16 COLORS</span>
+          <input type="range" min="0" max="100" value="50" aria-label="Reveal compressed image" id="comparison-slider">
+        </div>
+        <p class="drag-hint">← Drag to compare →</p>
+      </section>
+
+      <section class="method-section" id="method">
+        <div class="section-heading compact">
+          <span class="section-number">02</span>
+          <div><p class="kicker">THE METHOD</p><h2>From 76,800 choices to 16.</h2></div>
+        </div>
+        <div class="steps">
+          <article><span class="step-icon">[R,G,B]</span><small>STEP 01</small><h3>Turn pixels into vectors</h3><p>Each pixel becomes a point with three coordinates: how much red, green, and blue it contains.</p></article>
+          <article><span class="step-icon cluster-icon"><i></i><i></i><i></i><i></i><i></i></span><small>STEP 02</small><h3>Find natural clusters</h3><p>K-Means groups nearby colors, moving 16 centroids until they represent the image well.</p></article>
+          <article><span class="step-icon palette-icon"><i></i><i></i><i></i><i></i></span><small>STEP 03</small><h3>Rebuild with the palette</h3><p>Every pixel adopts its nearest centroid. The dimensions stay the same; the color vocabulary shrinks.</p></article>
+        </div>
+      </section>
+
+      <section class="palette-section">
+        <div class="palette-copy"><span class="section-number">03</span><p class="kicker">THE LEARNED PALETTE</p><h2>Sixteen colors do all the work.</h2><p>These are the centroids: the representative RGB vectors chosen by the algorithm from the image itself.</p></div>
+        <figure><img src="assets/IMG_0959_palette.png" alt="Grid showing the sixteen RGB centroid colors learned from the dog photo"><figcaption>Each swatch is one vector: [red, green, blue]</figcaption></figure>
+      </section>
+
+      <section class="vectors-section" id="vectors">
+        <div class="vector-visual"><img src="assets/IMG_0959_rgb_scatter.png" alt="Three-dimensional scatter plot of the dog's pixel colors in RGB space"></div>
+        <div class="vector-copy"><span class="section-number">04</span><p class="kicker">INSIDE COLOR SPACE</p><h2>This is what the photo looks like to K-Means.</h2><p>Every dot is a sampled pixel. Its position comes from three values—red, green, and blue. The bright triangles are the 16 centroids the algorithm learned.</p><div class="formula"><span>pixel</span> = [ <b>R</b>, <b>G</b>, <b>B</b> ]</div><p class="note">Nearby dots look alike. K-Means finds the center of each neighborhood, then uses those centers as the compressed palette.</p></div>
+      </section>
+
+      <section class="closing">
+        <p class="kicker">THE BIG IDEA</p>
+        <blockquote>Compression is not about keeping everything.<br><em>It is about finding what represents everything.</em></blockquote>
+        <a class="primary-cta dark" href="https://github.com/isaiahcampusano/image-compression">Explore the Python project <span>↗</span></a>
+      </section>
+    </main>
+
+    <footer><span>IMAGE COMPRESSION · K-MEANS</span><span>BUILT WITH PYTHON + SCIKIT-LEARN</span></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
+
