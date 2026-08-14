@@ -10,7 +10,7 @@ dog photo and a 16-color palette.
 The published project includes an interactive before/after comparison, the
 learned palette, and a 3D view of the pixel vectors:
 
-**https://isaiahcampusano.github.io/image-compression/**
+**https://isaiahcampusano.github.io/k-means/**
 
 ## Run it locally
 
@@ -38,4 +38,3 @@ pytest
 The test builds a synthetic RGB image, compresses it to four clusters, and
 checks that its shape is preserved and its palette contains no more than four
 colors.
-
