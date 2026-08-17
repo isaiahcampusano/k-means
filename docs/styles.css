@@ -44,10 +44,10 @@ h1 em, blockquote em { color: #697661; font-weight: 400; }
 .section-number { font: 500 12px var(--mono); color: #839079; border: 1px solid currentColor; border-radius: 50%; width: 36px; height: 36px; display: grid; place-items: center; }
 h2 { font-size: clamp(34px, 4vw, 62px); line-height: 1.02; letter-spacing: -.045em; margin: 9px 0 0; }
 .section-heading > p, .palette-copy > p:last-child, .vector-copy > p { color: #aeb4aa; line-height: 1.7; font-size: 15px; margin: 0; }
-.comparison { position: relative; max-width: 1120px; margin: auto; aspect-ratio: 4 / 3; overflow: hidden; background: #070807; user-select: none; }
+.comparison { position: relative; container-type: size; max-width: 1120px; margin: auto; aspect-ratio: 4 / 3; overflow: hidden; background: #070807; user-select: none; }
 .comparison-image { width: 100%; height: 100%; object-fit: cover; image-rendering: auto; }
 .compressed-wrap { position: absolute; inset: 0; width: var(--position); overflow: hidden; border-right: 1px solid white; }
-.compressed-wrap img { width: 1120px; max-width: none; }
+.compressed-wrap img { width: 100cqw; height: 100cqh; max-width: none; }
 .divider { position: absolute; left: var(--position); top: 0; bottom: 0; transform: translateX(-50%); width: 1px; background: white; pointer-events: none; }
 .divider span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--acid); color: var(--ink); font-size: 20px; }
 .comparison input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
@@ -100,7 +100,6 @@ footer { padding: 28px 4vw; background: var(--ink); color: #8b9286; display: fle
   .section-heading > p { grid-column: 2; }
   .comparison-section, .method-section { padding: 80px 6vw; }
   .comparison { aspect-ratio: 4 / 3; }
-  .compressed-wrap img { width: calc(88vw); }
   .steps { grid-template-columns: 1fr; }
   .steps article + article { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
   .palette-section, .vectors-section { grid-template-columns: 1fr; }
