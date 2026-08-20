@@ -5,6 +5,9 @@ uses K-Means clustering to learn a compact palette. Each original pixel is
 then replaced by its nearest learned color. The included example uses Isaiah's
 dog photo and a 16-color palette.
 
+![Uploading image.png…]()
+
+
 ## Try the live explainer
 
 The published project includes an interactive before/after comparison, the
